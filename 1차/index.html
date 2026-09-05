@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>(주)이루 | IRU - 자동차 시트 목업 전문기업</title>
+  <meta name="description" content="(주)이루는 자동차 시트 목업 설계 및 제작 전문 기업입니다. LET'S MAKE IT HAPPEN.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple-900: #1a1033;
+      --purple-800: #241645;
+      --purple-700: #2f1d5a;
+      --purple-600: #3d2873;
+      --purple-500: #5B3DB3;
+      --purple-400: #7B5FCC;
+      --purple-300: #9B82DD;
+      --purple-200: #C4B3EE;
+      --navy-900: #0c0e1a;
+      --navy-800: #12152a;
+      --navy-700: #1a1e38;
+      --navy-600: #242948;
+      --steel-100: #e8e9f0;
+      --steel-200: #cdd0de;
+      --steel-300: #a8adc4;
+      --steel-400: #7d84a3;
+      --steel-500: #5a6180;
+      --steel-600: #3d4263;
+      --accent: #5B3DB3;
+      --accent-light: #7B5FCC;
+      --accent-glow: rgba(91, 61, 179, 0.25);
+      --white: #ffffff;
+      --off-white: #f5f5fa;
+      --black: #08091a;
+      --font-display: 'Playfair Display', serif;
+      --font-heading: 'DM Sans', sans-serif;
+      --font-body: 'Noto Sans KR', sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-body); background: var(--navy-900); color: var(--steel-200); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-light); margin-bottom: 12px; }
+    .section-title { font-family: var(--font-body); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 20px; }
+    .accent-line { width: 48px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); margin-bottom: 24px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    @keyframes scrollPulse { 0%, 100% { opacity: 1; height: 40px; } 50% { opacity: 0.3; height: 20px; } }
+    @keyframes grain { 0%, 100% { transform: translate(0, 0); } 10% { transform: translate(-5%, -10%); } 30% { transform: translate(3%, -15%); } 50% { transform: translate(-10%, 5%); } 70% { transform: translate(8%, -5%); } 90% { transform: translate(-3%, 10%); } }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* 네비게이션 */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; transition: all 0.4s ease; }
+    .nav.scrolled { background: rgba(12, 14, 26, 0.95); backdrop-filter: blur(20px); padding: 10px 0; box-shadow: 0 1px 0 rgba(91, 61, 179, 0.1); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 14px; }
+    .nav-logo img { height: 46px; width: auto; object-fit: contain; transition: height 0.3s; }
+    .nav.scrolled .nav-logo img { height: 38px; }
+    .nav-links { display: flex; gap: 36px; align-items: center; }
+    .nav-links a { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 500; color: var(--steel-300); letter-spacing: 0.5px; transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--accent); transition: width 0.3s ease; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { padding: 10px 24px; background: transparent; border: 1.5px solid var(--accent); color: var(--accent-light) !important; border-radius: 4px; font-size: 0.82rem !important; font-weight: 600 !important; letter-spacing: 1px !important; transition: all 0.3s ease !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+    .nav-mobile-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-mobile-btn span { width: 24px; height: 2px; background: var(--steel-200); transition: all 0.3s; }
+    .nav-links.mobile-open { display: flex !important; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(12, 14, 26, 0.98); flex-direction: column; align-items: center; justify-content: center; gap: 32px; z-index: 9999; }
+    .nav-links.mobile-open a { font-size: 1.2rem; color: var(--steel-200); }
+
+    /* 히어로 */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(91, 61, 179, 0.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(91, 61, 179, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 60% 80%, rgba(26, 30, 56, 0.5) 0%, transparent 50%); z-index: 1; }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(91, 61, 179, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(91, 61, 179, 0.03) 1px, transparent 1px); background-size: 60px 60px; z-index: 0; }
+    .hero-noise { position: absolute; inset: -50%; width: 200%; height: 200%; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); animation: grain 8s steps(10) infinite; z-index: 0; pointer-events: none; }
+    .hero-content { position: relative; z-index: 2; max-width: 720px; animation: fadeUp 1s ease 0.3s both; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(91, 61, 179, 0.1); border: 1px solid rgba(91, 61, 179, 0.3); border-radius: 100px; font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; color: var(--purple-200); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 28px; }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease infinite; }
+    .hero h1 { font-family: var(--font-body); font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 900; color: var(--white); line-height: 1.2; margin-bottom: 10px; letter-spacing: -1px; }
+    .hero h1 .accent { background: linear-gradient(135deg, var(--purple-300), var(--accent), var(--purple-400)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; }
+    .hero-tagline { font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--steel-400); margin-bottom: 20px; }
+    .hero-sub { font-size: 1.05rem; font-weight: 300; color: var(--steel-300); line-height: 1.8; margin-bottom: 40px; max-width: 540px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: linear-gradient(135deg, var(--accent), var(--purple-600)); color: var(--white); font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.5px; border-radius: 4px; transition: all 0.3s ease; border: none; cursor: pointer; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: transparent; color: var(--steel-200); font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px; border: 1.5px solid var(--steel-500); border-radius: 4px; transition: all 0.3s ease; cursor: pointer; }
+    .btn-secondary:hover { border-color: var(--steel-300); color: var(--white); transform: translateY(-2px); }
+
+    .hero-visual { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 380px; height: 380px; z-index: 1; opacity: 0; animation: fadeIn 1.5s ease 0.8s both; }
+    .hero-visual-glow { position: absolute; inset: -40px; background: radial-gradient(circle, var(--accent-glow), transparent 70%); border-radius: 50%; filter: blur(40px); }
+    .hero-visual img { position: relative; width: 100%; height: 100%; object-fit: contain; filter: brightness(1.1) drop-shadow(0 0 40px rgba(91, 61, 179, 0.15)); z-index: 1; }
+    .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeIn 1s ease 1.5s both; }
+    .scroll-indicator span { font-family: var(--font-heading); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--steel-400); }
+    .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease infinite; }
+
+    /* 회사소개 */
+    .about-preview { padding: 120px 0; position: relative; background: linear-gradient(180deg, var(--navy-900), var(--navy-800)); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-image-area { position: relative; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--navy-700), var(--navy-600)); border-radius: 12px; overflow: hidden; }
+    .about-image-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--steel-400); font-size: 0.85rem; }
+    .about-image-placeholder svg { width: 48px; height: 48px; opacity: 0.4; }
+    .about-accent-box { position: absolute; bottom: -20px; right: -20px; background: linear-gradient(135deg, var(--accent), var(--purple-600)); padding: 24px 32px; border-radius: 8px; z-index: 2; }
+    .about-accent-box .number { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .about-accent-box .label { font-size: 0.8rem; font-weight: 500; color: var(--purple-200); margin-top: 4px; }
+    .about-text p { font-size: 1rem; line-height: 1.9; color: var(--steel-300); margin-bottom: 32px; }
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .about-feature-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--steel-200); }
+    .about-feature-item .check { width: 20px; height: 20px; background: rgba(91, 61, 179, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent-light); font-size: 0.65rem; flex-shrink: 0; }
+
+    /* 수치 */
+    .stats { padding: 80px 0; background: var(--navy-800); border-top: 1px solid rgba(91, 61, 179, 0.1); border-bottom: 1px solid rgba(91, 61, 179, 0.1); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+    .stat-item { text-align: center; padding: 32px 16px; position: relative; }
+    .stat-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; height: 60%; width: 1px; background: rgba(91, 61, 179, 0.15); }
+    .stat-number { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; color: var(--accent-light); line-height: 1; margin-bottom: 8px; }
+    .stat-unit { font-family: var(--font-heading); font-size: 1rem; color: var(--purple-300); }
+    .stat-label { font-size: 0.85rem; color: var(--steel-400); margin-top: 8px; }
+
+    /* 제품 */
+    .products { padding: 120px 0; background: linear-gradient(180deg, var(--navy-800), var(--navy-900)); }
+    .products-header { text-align: center; margin-bottom: 64px; }
+    .products-header p { font-size: 1rem; color: var(--steel-400); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .product-card { background: linear-gradient(160deg, rgba(36, 41, 72, 0.4), rgba(18, 21, 42, 0.6)); border: 1px solid rgba(91, 61, 179, 0.08); border-radius: 12px; overflow: hidden; transition: all 0.4s ease; cursor: pointer; }
+    .product-card:hover { transform: translateY(-8px); border-color: rgba(91, 61, 179, 0.25); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow); }
+    .product-card-image { aspect-ratio: 16/10; background: linear-gradient(135deg, var(--navy-700), var(--navy-600)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .product-card-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(12, 14, 26, 0.8)); }
+    .product-card-image svg { width: 40px; height: 40px; color: var(--steel-500); opacity: 0.5; }
+    .product-card-body { padding: 24px; }
+    .product-card-category { font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-light); margin-bottom: 8px; }
+    .product-card-title { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .product-card-desc { font-size: 0.85rem; color: var(--steel-400); line-height: 1.6; margin-bottom: 16px; }
+    .product-card-link { font-family: var(--font-heading); font-size: 0.8rem; font-weight: 600; color: var(--accent-light); display: inline-flex; align-items: center; gap: 6px; transition: gap 0.3s ease; }
+    .product-card:hover .product-card-link { gap: 12px; }
+    .products-more { text-align: center; margin-top: 48px; }
+
+    /* 기술력 */
+    .technology { padding: 120px 0; background: var(--navy-900); position: relative; }
+    .technology::before { content: ''; position: absolute; top: 0; right: 0; width: 40%; height: 100%; background: radial-gradient(ellipse at right center, rgba(91, 61, 179, 0.04), transparent 70%); pointer-events: none; }
+    .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .tech-card { padding: 40px; background: linear-gradient(160deg, rgba(36, 41, 72, 0.3), rgba(18, 21, 42, 0.4)); border: 1px solid rgba(91, 61, 179, 0.06); border-radius: 12px; transition: all 0.4s ease; position: relative; overflow: hidden; }
+    .tech-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: linear-gradient(to bottom, var(--accent), transparent); transition: height 0.5s ease; }
+    .tech-card:hover::before { height: 100%; }
+    .tech-card:hover { border-color: rgba(91, 61, 179, 0.2); background: linear-gradient(160deg, rgba(36, 41, 72, 0.5), rgba(18, 21, 42, 0.6)); }
+    .tech-card-icon { width: 52px; height: 52px; background: rgba(91, 61, 179, 0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.4rem; }
+    .tech-card-title { font-size: 1.15rem; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .tech-card-desc { font-size: 0.88rem; color: var(--steel-400); line-height: 1.7; }
+
+    /* CTA */
+    .cta { padding: 100px 0; background: linear-gradient(135deg, rgba(91, 61, 179, 0.08), transparent 50%), linear-gradient(225deg, rgba(91, 61, 179, 0.05), transparent 50%), var(--navy-800); text-align: center; position: relative; overflow: hidden; }
+    .cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(91, 61, 179, 0.06), transparent 60%); pointer-events: none; }
+    .cta-content { position: relative; z-index: 1; }
+    .cta p { font-size: 1rem; color: var(--steel-400); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* 푸터 */
+    .footer { padding: 64px 0 32px; background: var(--black); border-top: 1px solid rgba(91, 61, 179, 0.1); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-logo { height: 52px; width: auto; object-fit: contain; margin-bottom: 16px; filter: brightness(0.9); }
+    .footer-brand p { font-size: 0.85rem; color: var(--steel-500); line-height: 1.7; max-width: 300px; }
+    .footer-col-title { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-light); margin-bottom: 20px; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a { font-size: 0.85rem; color: var(--steel-500); transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--steel-200); }
+    .footer-bottom { padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-bottom p { font-size: 0.78rem; color: var(--steel-600); }
+    .footer-contact-info { display: flex; gap: 24px; }
+    .footer-contact-info span { font-size: 0.78rem; color: var(--steel-500); }
+
+    /* 반응형 */
+    @media (max-width: 1024px) {
+      .hero-visual { width: 280px; height: 280px; right: 2%; }
+      .about-grid { gap: 48px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+      .hero-visual { display: none; }
+      .hero h1 { font-size: 2rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn-primary, .hero-buttons .btn-secondary { width: 100%; justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image-area { max-height: 300px; }
+      .about-accent-box { bottom: -10px; right: 10px; padding: 16px 20px; }
+      .about-accent-box .number { font-size: 1.3rem; }
+      .about-features { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .stat-item:not(:last-child)::after { display: none; }
+      .products-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .tech-card { padding: 28px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-contact-info { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 네비게이션 -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="logo_png.png" alt="(주)이루 IRU 로고">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">회사소개</a>
+        <a href="#products">제품갤러리</a>
+        <a href="#technology">기술력</a>
+        <a href="#inquiry" class="nav-cta">견적문의</a>
+      </div>
+      <button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('mobile-open')" aria-label="메뉴">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 히어로 -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-noise"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="hero-badge-dot"></span>자동차 시트 목업 전문기업</div>
+        <h1>완벽한 목업,<br><span class="accent">IRU</span>가 만듭니다</h1>
+        <div class="hero-tagline">LET'S MAKE IT HAPPEN</div>
+        <p class="hero-sub">자동차 시트 설계부터 시제품 제작까지.<br>축적된 기술력과 정밀한 공정으로 고객의 비전을 현실로 구현합니다.</p>
+        <div class="hero-buttons">
+          <a href="#inquiry" class="btn-primary">견적 문의하기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#products" class="btn-secondary">제품 살펴보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-glow"></div>
+      <img src="logo_png.png" alt="IRU 로고">
+    </div>
+    <div class="scroll-indicator"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <!-- 회사소개 -->
+  <section class="about-preview" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-area reveal">
+          <div class="about-image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>회사 대표 이미지</span>
+          </div>
+          <div class="about-accent-box">
+            <div class="number">Since 2022</div>
+            <div class="label">설립</div>
+          </div>
+        </div>
+        <div class="about-text reveal" style="transition-delay: 0.2s;">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">신뢰를 설계하고<br>기술로 완성합니다</h2>
+          <div class="accent-line"></div>
+          <p>(주)이루는 자동차 시트 목업 분야에서 전문 기술력을 바탕으로, 국내외 완성차 업체 및 부품사에 최고 품질의 목업 솔루션을 제공하고 있습니다.</p>
+          <p>정밀한 설계, 철저한 품질 관리, 그리고 고객 맞춤형 솔루션으로 파트너사의 개발 프로세스를 함께 완성합니다.</p>
+          <div class="about-features">
+            <div class="about-feature-item"><span class="check">✓</span>정밀 목업 설계</div>
+            <div class="about-feature-item"><span class="check">✓</span>시제품 제작</div>
+            <div class="about-feature-item"><span class="check">✓</span>품질 인증 보유</div>
+            <div class="about-feature-item"><span class="check">✓</span>납기 준수율 99%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 수치 -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal"><div class="stat-number" data-count="500">0<span class="stat-unit">+</span></div><div class="stat-label">누적 프로젝트</div></div>
+        <div class="stat-item reveal" style="transition-delay:0.1s"><div class="stat-number" data-count="99">0<span class="stat-unit">%</span></div><div class="stat-label">납기 준수율</div></div>
+        <div class="stat-item reveal" style="transition-delay:0.2s"><div class="stat-number" data-count="30">0<span class="stat-unit">+</span></div><div class="stat-label">보유 설비 수</div></div>
+        <div class="stat-item reveal" style="transition-delay:0.3s"><div class="stat-number" data-count="50">0<span class="stat-unit">+</span></div><div class="stat-label">파트너 기업</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 제품 -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="products-header reveal">
+        <div class="section-label">Products</div>
+        <h2 class="section-title">주요 제품 라인업</h2>
+        <p>자동차 시트 목업의 모든 것. 설계부터 최종 검수까지 원스톱 솔루션을 제공합니다.</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card reveal">
+          <div class="product-card-image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="product-card-body">
+            <div class="product-card-category">Seat Mockup</div>
+            <div class="product-card-title">시트 목업 (Full Set)</div>
+            <div class="product-card-desc">완성차 개발 단계에서 필요한 전체 시트 목업. 실제 시트와 동일한 형상 및 기능을 재현합니다.</div>
+            <span class="product-card-link">자세히 보기 →</span>
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:0.15s">
+          <div class="product-card-image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="product-card-body">
+            <div class="product-card-category">Components</div>
+            <div class="product-card-title">시트 부품 목업</div>
+            <div class="product-card-desc">헤드레스트, 암레스트, 리클라이너 등 개별 부품 단위의 정밀 목업을 제작합니다.</div>
+            <span class="product-card-link">자세히 보기 →</span>
+          </div>
+        </div>
+        <div class="product-card reveal" style="transition-delay:0.3s">
+          <div class="product-card-image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+          <div class="product-card-body">
+            <div class="product-card-category">Prototype</div>
+            <div class="product-card-title">기능성 시제품</div>
+            <div class="product-card-desc">실제 동작이 가능한 기능성 시제품. 슬라이딩, 리클라이닝 등 메커니즘을 구현합니다.</div>
+            <span class="product-card-link">자세히 보기 →</span>
+          </div>
+        </div>
+      </div>
+      <div class="products-more"><a href="#" class="btn-secondary">전체 제품 보기 →</a></div>
+    </div>
+  </section>
+
+  <!-- 기술력 -->
+  <section class="technology" id="technology">
+    <div class="container">
+      <div class="section-label reveal">Technology</div>
+      <h2 class="section-title reveal">핵심 기술 & 역량</h2>
+      <div class="accent-line reveal"></div><br>
+      <div class="tech-grid">
+        <div class="tech-card reveal"><div class="tech-card-icon">🔧</div><div class="tech-card-title">정밀 CNC 가공</div><div class="tech-card-desc">최신 5축 CNC 장비를 활용한 정밀 가공 기술로, ±0.05mm 이내의 높은 정밀도를 보장합니다.</div></div>
+        <div class="tech-card reveal" style="transition-delay:0.1s"><div class="tech-card-icon">📐</div><div class="tech-card-title">3D 설계 & 모델링</div><div class="tech-card-desc">CATIA, SolidWorks 기반의 3D 설계 역량으로, 최적화된 목업 설계를 제안합니다.</div></div>
+        <div class="tech-card reveal" style="transition-delay:0.2s"><div class="tech-card-icon">🔍</div><div class="tech-card-title">품질 관리 시스템</div><div class="tech-card-desc">3차원 측정기(CMM)를 활용한 정밀 검사와 체계적인 QC 프로세스로 일관된 품질을 유지합니다.</div></div>
+        <div class="tech-card reveal" style="transition-delay:0.3s"><div class="tech-card-icon">⚙️</div><div class="tech-card-title">다양한 소재 대응</div><div class="tech-card-desc">알루미늄, 스틸, 엔지니어링 플라스틱 등 다양한 소재에 대한 가공 노하우를 보유하고 있습니다.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 견적문의 CTA -->
+  <section class="cta" id="inquiry">
+    <div class="container cta-content">
+      <div class="section-label reveal">Contact Us</div>
+      <h2 class="section-title reveal">프로젝트를 함께 시작하세요</h2>
+      <p class="reveal">견적 문의부터 기술 상담까지, (주)이루가 최적의 솔루션을 제안해 드립니다.</p>
+      <div class="cta-buttons reveal">
+        <a href="#" class="btn-primary">견적 요청하기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="tel:000-0000-0000" class="btn-secondary">📞 전화 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo_png.png" alt="(주)이루 IRU" class="footer-brand-logo">
+          <p>자동차 시트 목업의 새로운 기준.<br>Let's Make It Happen.</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">메뉴</div>
+          <ul><li><a href="#about">회사소개</a></li><li><a href="#products">제품갤러리</a></li><li><a href="#technology">기술력</a></li><li><a href="#inquiry">견적문의</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">제품</div>
+          <ul><li><a href="#">시트 목업</a></li><li><a href="#">부품 목업</a></li><li><a href="#">기능성 시제품</a></li><li><a href="#">카탈로그</a></li></ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">연락처</div>
+          <ul><li><a href="#">📍 주소 입력</a></li><li><a href="tel:000-0000-0000">📞 000-0000-0000</a></li><li><a href="mailto:info@iru.co.kr">✉️ info@iru.co.kr</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 (주)이루 IRU. All rights reserved.</p>
+        <div class="footer-contact-info"><span>사업자등록번호: 000-00-00000</span><span>대표: 대표이사명</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target; const target = parseInt(el.dataset.count);
+          const unit = el.querySelector('.stat-unit')?.textContent || '';
+          let current = 0; const step = Math.ceil(target / 40);
+          const timer = setInterval(() => { current += step; if (current >= target) { current = target; clearInterval(timer); } el.innerHTML = current + `<span class="stat-unit">${unit}</span>`; }, 30);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    statNumbers.forEach(el => countObserver.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('navLinks').classList.remove('mobile-open');
+      });
+    });
+  </script>
+</body>
+</html>

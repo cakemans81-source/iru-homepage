@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>(주)이루 IRU | 자동차 시트 목업 & VIP 프리미엄 시트 튜닝 전문 스튜디오</title>
+  <meta name="description" content="(주)이루 - 완성차 연구소의 정밀 시트 목업부터 최고급 VIP 의전 리무진 시트 튜닝까지. 3D 역설계, 5축 CNC 가공, 장인정신의 나파가죽 커스텀.">
+  <meta name="keywords" content="이루, 자동차시트목업, 시트목업, 차량시트프로토타입, 카니발리무진시트, 스타리아의전시트, VIP시트튜닝, 나파가죽시트개조, 자동차실내커스텀, 의전시트">
+  
+  <!-- 오픈그래프 (소셜 공유 최적화) -->
+  <meta property="og:title" content="(주)이루 IRU | 자동차 시트 목업 & VIP 시트 튜닝">
+  <meta property="og:description" content="완성차 연구소의 정밀 목업 기술력 그대로, 당신의 차량에 담아냅니다.">
+  <meta property="og:type" content="website">
+
+  <!-- 웹폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0c;
+      --bg-secondary: #121216;
+      --bg-card: #181820;
+      --bg-elevated: #22222c;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.18);
+      --text-primary: #ffffff;
+      --text-secondary: #a8a8b8;
+      --text-muted: #6b6b7e;
+      --accent: #8b6ce7;
+      --accent-light: #a78bfa;
+      --accent-subtle: rgba(139, 108, 231, 0.1);
+      --accent-glow: rgba(139, 108, 231, 0.28);
+      --gold: #d4af37;
+      --gold-subtle: rgba(212, 175, 55, 0.15);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-heading: 'DM Sans', sans-serif;
+      --font-body: 'Noto Sans KR', sans-serif;
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button, input, select, textarea { font-family: inherit; }
+
+    .container { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+
+    /* ═══════ 애니메이션 ═══════ */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+
+    /* ═══════ 공통 타이포 & 뱃지 ═══════ */
+    .section-label {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-label::before {
+      content: '';
+      width: 18px;
+      height: 1.5px;
+      background: var(--accent-light);
+    }
+    .section-title {
+      font-family: var(--font-body);
+      font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 620px;
+    }
+
+    /* ═══════ 네비게이션 ═══════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 22px 0; transition: all 0.4s var(--ease-out);
+    }
+    .nav.scrolled {
+      background: rgba(10, 10, 12, 0.94);
+      backdrop-filter: blur(24px) saturate(1.2);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; }
+    .nav-logo img {
+      height: 40px; width: auto; object-fit: contain;
+      filter: brightness(0) invert(1);
+      transition: height 0.3s;
+    }
+    .nav.scrolled .nav-logo img { height: 34px; }
+    .nav-logo-sub {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      border-left: 1px solid var(--border);
+      padding-left: 12px;
+    }
+
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      padding: 10px 24px !important;
+      background: linear-gradient(135deg, var(--accent), #6a4ec7) !important;
+      color: var(--text-primary) !important;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      font-size: 0.8rem !important;
+      transition: all 0.3s var(--ease-out) !important;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(139, 108, 231, 0.45);
+    }
+    .nav-mobile-btn { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-mobile-btn span { width: 24px; height: 1.5px; background: var(--text-primary); transition: all 0.3s; }
+    .nav-links.mobile-open {
+      display: flex !important; position: fixed; inset: 0;
+      background: rgba(10, 10, 12, 0.98); flex-direction: column;
+      align-items: center; justify-content: center; gap: 32px; z-index: 9999;
+    }
+    .nav-links.mobile-open a { font-size: 1.3rem; color: var(--text-primary); }
+
+    /* ═══════ 히어로 섹션 ═══════ */
+    .hero {
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; text-align: center; overflow: hidden; padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(139, 108, 231, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
+        var(--bg-primary);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 980px; animation: fadeUp 1.2s var(--ease-out) 0.1s both; }
+    .hero-badge-wrap {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 20px; background: rgba(139, 108, 231, 0.08);
+      border: 1px solid rgba(139, 108, 231, 0.25); border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-badge-wrap .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-light); animation: pulseGlow 2s infinite; }
+    .hero-badge-wrap span { font-family: var(--font-heading); font-size: 0.72rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent-light); }
+    
+    .hero h1 {
+      font-family: var(--font-display); font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+      font-weight: 500; color: var(--text-primary); line-height: 1.12;
+      letter-spacing: -1px; margin-bottom: 18px;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent-light); font-weight: 400; }
+    .hero h1 .highlight-gold { font-style: normal; color: var(--gold); }
+    
+    .hero-korean-lead {
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      font-weight: 600; color: #f0f0f5; margin-bottom: 18px; letter-spacing: -0.3px;
+    }
+    .hero-desc {
+      font-size: 1.02rem; font-weight: 300; color: var(--text-secondary);
+      line-height: 1.8; max-width: 680px; margin: 0 auto 44px;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px; background: linear-gradient(135deg, var(--accent), #6b4ec9);
+      color: var(--text-primary); font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.5px; border-radius: 100px; transition: all 0.35s var(--ease-out);
+      border: none; cursor: pointer; box-shadow: 0 10px 30px var(--accent-glow);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(139, 108, 231, 0.45); }
+    
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px; background: linear-gradient(135deg, #2b2314, #1a160c);
+      color: var(--gold); border: 1.5px solid rgba(212, 175, 55, 0.5);
+      font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.5px; border-radius: 100px; transition: all 0.35s var(--ease-out);
+      cursor: pointer; box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+    }
+    .btn-gold:hover { transform: translateY(-3px); background: #352b19; border-color: var(--gold); color: #fff; }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; background: transparent; color: var(--text-secondary);
+      font-family: var(--font-heading); font-size: 0.88rem; font-weight: 500;
+      letter-spacing: 0.5px; border: 1px solid var(--border-hover);
+      border-radius: 100px; transition: all 0.35s var(--ease-out); cursor: pointer;
+    }
+    .btn-ghost:hover { border-color: var(--text-secondary); color: var(--text-primary); transform: translateY(-2px); }
+
+    /* ═══════ 마키 텍스트 ═══════ */
+    .marquee-section {
+      padding: 30px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary); overflow: hidden;
+    }
+    .marquee-track { display: flex; animation: marquee 30s linear infinite; width: max-content; }
+    .marquee-text {
+      font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400; color: var(--text-primary); white-space: nowrap;
+      padding: 0 30px; opacity: 0.25; letter-spacing: 2px;
+    }
+    .marquee-text .dot { color: var(--accent); opacity: 0.9; margin: 0 16px; font-size: 0.8em; }
+
+    /* ═══════ 이미지 플레이스홀더 시스템 ═══════ */
+    .media-box {
+      position: relative; width: 100%; height: 100%; overflow: hidden;
+      background: #15151b; display: flex; align-items: center; justify-content: center;
+    }
+    .media-box img.real-img {
+      width: 100%; height: 100%; object-fit: cover; display: none;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .media-box img.real-img.loaded { display: block; }
+    
+    .placeholder-guide {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 24px; text-align: center; width: 100%; height: 100%;
+      background: linear-gradient(145deg, #181822, #101016);
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+      border-radius: 6px; position: relative;
+    }
+    .placeholder-guide .ph-badge {
+      font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light);
+      background: rgba(139, 108, 231, 0.12); padding: 4px 10px; border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .placeholder-guide .ph-icon { font-size: 2.2rem; margin-bottom: 8px; opacity: 0.7; }
+    .placeholder-guide .ph-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+    .placeholder-guide .ph-spec { font-family: var(--font-heading); font-size: 0.75rem; color: var(--gold); margin-bottom: 4px; }
+    .placeholder-guide .ph-path {
+      font-family: monospace; font-size: 0.7rem; color: var(--text-muted);
+      background: rgba(0,0,0,0.3); padding: 3px 8px; border-radius: 4px;
+    }
+
+    /* ═══════ 회사소개 & 신뢰자산 (About) ═══════ */
+    .about { padding: 120px 0; background: var(--bg-primary); position: relative; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-image-wrapper {
+      aspect-ratio: 4/3; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .about-trust-badges {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px;
+    }
+    .trust-badge-item {
+      padding: 16px; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; display: flex; align-items: center; gap: 12px;
+    }
+    .trust-badge-item .icon { font-size: 1.4rem; }
+    .trust-badge-item .text h4 { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+    .trust-badge-item .text p { font-size: 0.72rem; color: var(--text-muted); }
+
+    .about-stats-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--border);
+    }
+    .about-stat-item .num {
+      font-family: var(--font-display); font-size: 2.6rem; font-weight: 600;
+      color: var(--text-primary); line-height: 1;
+    }
+    .about-stat-item .num span { color: var(--accent-light); }
+    .about-stat-item .txt { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* ═══════ 사업분야 투-트랙 (Business Areas) ═══════ */
+    .services { padding: 120px 0; background: var(--bg-secondary); border-top: 1px solid var(--border); }
+    .services-header { text-align: center; max-width: 720px; margin: 0 auto 70px; }
+    .services-header .section-label { justify-content: center; }
+    .services-header .section-label::before { display: none; }
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    
+    .service-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden; transition: all 0.45s var(--ease-out);
+      display: flex; flex-direction: column;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .service-card.tuning { border-color: rgba(212, 175, 55, 0.25); }
+    .service-card.tuning:hover { border-color: rgba(212, 175, 55, 0.6); }
+
+    .service-img-wrap { height: 260px; position: relative; }
+    .service-body { padding: 36px; flex: 1; display: flex; flex-direction: column; }
+    .service-tag {
+      font-family: var(--font-heading); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .service-card.mockup .service-tag { color: var(--accent-light); }
+    .service-card.tuning .service-tag { color: var(--gold); }
+    
+    .service-title { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+    .service-desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
+    
+    .service-features { margin-bottom: 32px; flex: 1; }
+    .service-features li {
+      display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem;
+      color: var(--text-secondary); margin-bottom: 10px;
+    }
+    .service-features li::before {
+      content: '✓'; font-weight: 700; color: var(--accent-light);
+    }
+    .service-card.tuning .service-features li::before { color: var(--gold); }
+    
+    .service-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 24px; border-radius: 8px; font-family: var(--font-heading);
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s;
+    }
+    .service-card.mockup .service-btn {
+      background: var(--accent-subtle); color: var(--accent-light); border: 1px solid rgba(139, 108, 231, 0.3);
+    }
+    .service-card.mockup .service-btn:hover { background: var(--accent); color: #fff; }
+    
+    .service-card.tuning .service-btn {
+      background: var(--gold-subtle); color: var(--gold); border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+    .service-card.tuning .service-btn:hover { background: var(--gold); color: #111; }
+
+    /* ═══════ 포트폴리오 & 필터링 갤러리 ═══════ */
+    .gallery { padding: 120px 0; background: var(--bg-primary); border-top: 1px solid var(--border); }
+    .gallery-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 48px; flex-wrap: wrap; gap: 24px;
+    }
+    .gallery-filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 10px 20px; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 100px; color: var(--text-muted); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.5px; cursor: pointer; transition: all 0.3s var(--ease-out);
+    }
+    .filter-btn:hover { color: var(--text-primary); border-color: var(--border-hover); }
+    .filter-btn.active {
+      background: var(--text-primary); color: var(--bg-primary); border-color: var(--text-primary);
+    }
+
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    }
+    .gallery-card {
+      position: relative; border-radius: 10px; overflow: hidden;
+      background: var(--bg-card); border: 1px solid var(--border);
+      transition: all 0.45s var(--ease-out); min-height: 280px;
+    }
+    .gallery-card.featured { grid-column: span 2; grid-row: span 2; min-height: 580px; }
+    .gallery-card.tall { grid-row: span 2; min-height: 580px; }
+    .gallery-card.wide { grid-column: span 2; min-height: 280px; }
+    
+    .gallery-card:hover { transform: translateY(-4px); border-color: var(--border-hover); }
+    .gallery-card:hover .gallery-card-overlay { opacity: 1; }
+    .gallery-card:hover .real-img { transform: scale(1.05); }
+
+    .gallery-card-overlay {
+      position: absolute; inset: 0; z-index: 3;
+      background: linear-gradient(to top, rgba(10,10,12,0.96) 0%, rgba(10,10,12,0.4) 50%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 24px; opacity: 0; transition: opacity 0.35s ease; pointer-events: none;
+    }
+    .gallery-card-overlay .cat-badge {
+      font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px;
+    }
+    .gallery-card-overlay .cat-badge.mockup { color: var(--accent-light); }
+    .gallery-card-overlay .cat-badge.tuning { color: var(--gold); }
+    .gallery-card-overlay .cat-badge.detail { color: #8cd867; }
+    
+    .gallery-card-overlay .title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+    .gallery-card-overlay .desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* ═══════ 핵심 기술력 (Technology) ═══════ */
+    .technology { padding: 120px 0; background: var(--bg-secondary); border-top: 1px solid var(--border); }
+    .tech-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .tech-sticky { position: sticky; top: 120px; }
+    .tech-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .tech-card {
+      padding: 30px; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; transition: all 0.35s; position: relative;
+    }
+    .tech-card:hover { border-color: var(--border-hover); transform: translateY(-4px); background: var(--bg-elevated); }
+    .tech-card-num {
+      font-family: var(--font-display); font-size: 2.2rem; font-weight: 600;
+      color: rgba(255,255,255,0.06); position: absolute; top: 16px; right: 20px;
+    }
+    .tech-card-icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .tech-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .tech-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* ═══════ 견적 및 상담 인터랙티브 폼 (Inquiry Form) ═══════ */
+    .inquiry-section {
+      padding: 120px 0; background: var(--bg-primary); border-top: 1px solid var(--border);
+      position: relative;
+    }
+    .inquiry-wrapper {
+      max-width: 900px; margin: 0 auto; background: var(--bg-card);
+      border: 1px solid var(--border); border-radius: 20px; padding: 50px 60px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+    .inquiry-head { text-align: center; margin-bottom: 40px; }
+    .inquiry-head h2 { font-size: 2.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+    .inquiry-head p { font-size: 0.95rem; color: var(--text-secondary); }
+
+    /* 유형 선택 탭 */
+    .inquiry-type-selector {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 36px;
+    }
+    .type-tab-btn {
+      padding: 18px 24px; border: 2px solid var(--border); border-radius: 12px;
+      background: var(--bg-secondary); color: var(--text-secondary);
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: all 0.3s;
+    }
+    .type-tab-btn.active {
+      border-color: var(--accent); background: var(--accent-subtle); color: var(--text-primary);
+    }
+    .type-tab-btn.active.tuning-tab {
+      border-color: var(--gold); background: var(--gold-subtle); color: var(--text-primary);
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .form-group.full { grid-column: span 2; }
+    .form-group label {
+      font-size: 0.82rem; font-weight: 600; color: var(--text-primary);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .form-group label span.req { color: #ff5e5e; }
+    
+    .form-control {
+      padding: 14px 18px; background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--text-primary); font-size: 0.9rem;
+      transition: border-color 0.3s; width: 100%;
+    }
+    .form-control:focus { outline: none; border-color: var(--accent-light); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+
+    /* 옵션 체크박스 그룹 */
+    .checkbox-group {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;
+      background: var(--bg-secondary); padding: 16px; border-radius: 8px; border: 1px solid var(--border);
+    }
+    .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-secondary); cursor: pointer; }
+    .checkbox-item input { accent-color: var(--accent); width: 16px; height: 16px; }
+
+    /* 파일 업로드 가이드 박스 */
+    .file-upload-box {
+      border: 1px dashed var(--border); border-radius: 8px; padding: 18px;
+      text-align: center; background: rgba(255,255,255,0.01);
+      cursor: pointer; transition: all 0.3s;
+    }
+    .file-upload-box:hover { border-color: var(--accent-light); }
+    .file-upload-box span { font-size: 0.8rem; color: var(--text-muted); }
+
+    .privacy-notice {
+      font-size: 0.76rem; color: var(--text-muted); margin: 24px 0 32px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .privacy-notice input { accent-color: var(--accent); }
+
+    .submit-btn {
+      width: 100%; padding: 18px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), #5d3ebc);
+      color: #fff; font-size: 1rem; font-weight: 700; border: none;
+      cursor: pointer; transition: all 0.35s;
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(139, 108, 231, 0.45); }
+
+    .quick-call-box {
+      margin-top: 36px; padding: 20px; border-radius: 10px;
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .quick-call-box .txt h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); }
+    .quick-call-box .txt p { font-size: 0.8rem; color: var(--text-muted); }
+    .call-btn {
+      padding: 10px 24px; border-radius: 100px; border: 1px solid var(--border-hover);
+      color: var(--text-primary); font-size: 0.85rem; font-weight: 600;
+      transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .call-btn:hover { background: var(--text-primary); color: var(--bg-primary); }
+
+    /* ═══════ 푸터 ═══════ */
+    .footer { padding: 80px 0 40px; background: #070709; border-top: 1px solid var(--border); }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
+      gap: 50px; margin-bottom: 60px;
+    }
+    .footer-brand img { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: 0.8; margin-bottom: 20px; }
+    .footer-brand p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; max-width: 300px; }
+    .footer-col-title {
+      font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary);
+      margin-bottom: 22px;
+    }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a { font-size: 0.82rem; color: var(--text-muted); transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--text-primary); }
+    
+    .footer-bottom {
+      padding-top: 32px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-bottom p { font-size: 0.74rem; color: var(--text-muted); }
+    .footer-legal-links { display: flex; gap: 20px; font-size: 0.74rem; color: var(--text-muted); }
+
+    /* ═══════ 반응형 미디어 쿼리 ═══════ */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 50px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-card.featured { grid-column: span 2; min-height: 400px; }
+      .gallery-card.tall { grid-row: span 1; min-height: 340px; }
+      .tech-layout { grid-template-columns: 1fr; gap: 40px; }
+      .tech-sticky { position: static; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-mobile-btn { display: flex; }
+      .hero { min-height: auto; padding: 140px 0 80px; }
+      .hero-buttons { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
+      .about-stats-row { grid-template-columns: 1fr; gap: 24px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-card.featured, .gallery-card.wide { grid-column: span 1; min-height: 300px; }
+      .inquiry-wrapper { padding: 30px 20px; }
+      .inquiry-type-selector { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .tech-cards { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ NAV ═══════ -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="logo_png.png" alt="(주)이루 IRU">
+        <span class="nav-logo-sub">MOCKUP & TUNING STUDIO</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Portfolio</a>
+        <a href="#technology">Technology</a>
+        <a href="#inquiry" class="nav-cta">견적/상담문의</a>
+      </div>
+      <button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('mobile-open')" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="container hero-content">
+      <div class="hero-badge-wrap">
+        <span class="dot"></span>
+        <span>Automotive Prototype & Luxury Custom</span>
+      </div>
+      
+      <h1>Precision Mockup &<br><em>Luxury Seat</em> <span class="highlight-gold">Tuning</span></h1>
+      
+      <p class="hero-korean-lead">
+        완성차 연구소의 정밀 목업부터, 프리미엄 VIP 시트 튜닝까지
+      </p>
+      
+      <p class="hero-desc">
+        0.1mm 오차 없는 3D 설계와 5축 CNC 정밀 가공, 그리고 최고급 나파가죽·스티치 장인정신.<br>
+        (주)이루는 자동차 시트의 형상과 승차감의 새로운 기준을 제시합니다.
+      </p>
+      
+      <div class="hero-buttons">
+        <a href="#inquiry" onclick="switchInquiryType('mockup')" class="btn-primary">
+          🏢 B2B 시트 목업 의뢰
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#inquiry" onclick="switchInquiryType('tuning')" class="btn-gold">
+          🚘 VIP 시트 튜닝 상담
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#gallery" class="btn-ghost">포트폴리오 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ MARQUEE ═══════ -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-text">
+        PRECISION SEAT MOCKUP <span class="dot">◆</span> VIP LIMOUSINE SEAT <span class="dot">◆</span> 5-AXIS CNC <span class="dot">◆</span> NAPPA LEATHER <span class="dot">◆</span> ERGONOMIC CRAFT <span class="dot">◆</span> CARNIVAL & STARIA CUSTOM <span class="dot">◆</span> NDA SECURITY GUARANTEE <span class="dot">◆</span>
+      </div>
+      <div class="marquee-text">
+        PRECISION SEAT MOCKUP <span class="dot">◆</span> VIP LIMOUSINE SEAT <span class="dot">◆</span> 5-AXIS CNC <span class="dot">◆</span> NAPPA LEATHER <span class="dot">◆</span> ERGONOMIC CRAFT <span class="dot">◆</span> CARNIVAL & STARIA CUSTOM <span class="dot">◆</span> NDA SECURITY GUARANTEE <span class="dot">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ ABOUT US ═══════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <!-- 좌측: 비주얼 영역 (사진 에셋 칸) -->
+        <div class="about-visual reveal">
+          <div class="about-image-wrapper media-box">
+            <!-- 사용자가 실사진 업로드 시 images/about_factory.jpg 로 연결 -->
+            <img src="images/about_factory.jpg" alt="이루 본사 및 제조 시설" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge">Photo Slot</span>
+              <div class="ph-icon">🏭</div>
+              <div class="ph-title">스튜디오 & 공장 전경 사진</div>
+              <div class="ph-spec">권장: 1000 x 750px (4:3 비율)</div>
+              <div class="ph-path">images/about_factory.jpg</div>
+            </div>
+          </div>
+          
+          <div class="about-trust-badges">
+            <div class="trust-badge-item">
+              <span class="icon">🔒</span>
+              <div class="text">
+                <h4>100% 보안 NDA 유지</h4>
+                <p>완성차 선행 디자인 보안 보장</p>
+              </div>
+            </div>
+            <div class="trust-badge-item">
+              <span class="icon">🛡️</span>
+              <div class="text">
+                <h4>합법 구조변경 & 안전검증</h4>
+                <p>국토부 기준 충돌 안전 프레임</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 소개 콘텐츠 -->
+        <div class="about-content reveal reveal-delay-1">
+          <div class="section-label">Who We Are</div>
+          <h2 class="section-title">
+            완성차 연구개발부터<br>
+            하이엔드 튜닝까지 아우르는 기술력
+          </h2>
+          <p class="section-desc">
+            (주)이루는 자동차 시트 분야의 엔지니어링 역량과 장인정신을 결합한 전문 제조 스튜디오입니다.<br><br>
+            국내 완성차 및 1차 부품사의 엄격한 품평회 기준을 만족시키는 <strong>정밀 시트 목업 개발</strong>과,
+            연구소의 품질 기준을 그대로 적용하여 탄생한 <strong>카니발·스타리아·수입 밴 VIP 프리미엄 시트 튜닝</strong>을 통해
+            모빌리티 실내 공간의 궁극적인 편안함과 가치를 완성합니다.
+          </p>
+          
+          <div class="about-stats-row">
+            <div class="about-stat-item">
+              <div class="num">500<span>+</span></div>
+              <div class="txt">누적 개발/시공 프로젝트</div>
+            </div>
+            <div class="about-stat-item">
+              <div class="num">99<span>%</span></div>
+              <div class="txt">약속된 납기 준수율</div>
+            </div>
+            <div class="about-stat-item">
+              <div class="num">50<span>+</span></div>
+              <div class="txt">완성차 및 파트너 고객사</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ [신설] 핵심 사업분야 (Services: Two-Track) ═══════ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label">Core Businesses</div>
+        <h2 class="section-title">이루의 2대 핵심 사업 분야</h2>
+        <p class="section-desc">
+          B2B 연구소 품평회 시제품 개발부터 개인 및 법인 고객을 위한 맞춤형 튜닝까지,
+          독보적인 기술력으로 최적의 솔루션을 제공합니다.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Track 01. 시트 목업 -->
+        <div class="service-card mockup reveal">
+          <div class="service-img-wrap media-box">
+            <img src="images/service_mockup.jpg" alt="시트 목업 및 시제품 개발" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge">B2B R&D Slot</span>
+              <div class="ph-icon">💺</div>
+              <div class="ph-title">시트 목업 풀세트 사진</div>
+              <div class="ph-spec">권장: 800 x 500px (JPG)</div>
+              <div class="ph-path">images/service_mockup.jpg</div>
+            </div>
+          </div>
+          <div class="service-body">
+            <div class="service-tag">Business Track 01 · B2B R&D</div>
+            <h3 class="service-title">자동차 시트 목업 & 시제품 개발</h3>
+            <p class="service-desc">
+              완성차 연구소 및 1차 협력사를 위한 디자인 품평회용 목업, 조립성 검증 프로토타입, 기능성 시제품을 제작합니다.
+            </p>
+            <ul class="service-features">
+              <li>선행 디자인 검증용 1:1 풀 세트(Full Set) 시트 목업</li>
+              <li>폼(Foam) 및 프레임 역설계 / 정밀 3D 스캐닝</li>
+              <li>전동 리클라이닝·슬라이딩 메커니즘 동작 시제품</li>
+              <li>긴급 품평회 일정 대응을 위한 초단기 패스트트랙 납기</li>
+            </ul>
+            <a href="#inquiry" onclick="switchInquiryType('mockup')" class="service-btn">
+              시트 목업 견적 문의하기 →
+            </a>
+          </div>
+        </div>
+
+        <!-- Track 02. 시트 튜닝 -->
+        <div class="service-card tuning reveal reveal-delay-1">
+          <div class="service-img-wrap media-box">
+            <img src="images/service_tuning.jpg" alt="VIP 프리미엄 시트 튜닝" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge" style="color:var(--gold); background:rgba(212,175,55,0.12);">Tuning Slot</span>
+              <div class="ph-icon">🚘</div>
+              <div class="ph-title">VIP 의전 리무진 시트 실내 샷</div>
+              <div class="ph-spec">권장: 800 x 500px (JPG)</div>
+              <div class="ph-path">images/service_tuning.jpg</div>
+            </div>
+          </div>
+          <div class="service-body">
+            <div class="service-tag">Business Track 02 · Custom Tuning</div>
+            <h3 class="service-title">VIP 프리미엄 시트 튜닝 & 특장</h3>
+            <p class="service-desc">
+              카니발, 스타리아, 수입 밴을 위한 최고급 의전 리무진 시트와 차박 평탄화, 명품 가죽 실내 커스텀을 시공합니다.
+            </p>
+            <ul class="service-features">
+              <li>무중력 모드 전동 VIP 의전 시트 (언더서포트·에어 안마)</li>
+              <li>최고급 독일 나파가죽 & 이태리 알칸타라 트리밍</li>
+              <li>차박·캠핑 전용 180도 침대형 평탄화 시트 및 롱레일 개조</li>
+              <li>국토부 자동차 안전기준 및 합법적 구조변경 100% 지원</li>
+            </ul>
+            <a href="#inquiry" onclick="switchInquiryType('tuning')" class="service-btn">
+              VIP 시트 튜닝 상담하기 →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 포트폴리오 & 필터링 갤러리 (Portfolio) ═══════ -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery-header">
+        <div class="gallery-header-left reveal">
+          <div class="section-label">Our Portfolio</div>
+          <h2 class="section-title">디테일이 증명하는 완성도</h2>
+          <p class="section-desc">완성차 목업부터 VIP 리무진 튜닝 시트까지, 이루의 실제 제작 결과물을 확인하세요.</p>
+        </div>
+        
+        <!-- 카테고리 필터 버튼 -->
+        <div class="gallery-filter-tabs reveal reveal-delay-1">
+          <button class="filter-btn active" onclick="filterGallery('all')">전체보기</button>
+          <button class="filter-btn" onclick="filterGallery('mockup')">시트 목업</button>
+          <button class="filter-btn" onclick="filterGallery('tuning')">VIP 시트 튜닝</button>
+          <button class="filter-btn" onclick="filterGallery('detail')">소재 & 디테일</button>
+        </div>
+      </div>
+
+      <!-- 갤러리 그리드 (8개 슬롯) -->
+      <div class="gallery-grid">
+        <!-- 1. 목업 피처드 -->
+        <div class="gallery-card featured reveal" data-category="mockup">
+          <div class="media-box">
+            <img src="images/portfolio_mockup_01.jpg" alt="프리미엄 세단 풀세트 목업" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge">Featured Slot</span>
+              <div class="ph-icon">💺</div>
+              <div class="ph-title">프리미엄 시트 목업 — 풀 세트</div>
+              <div class="ph-spec">권장: 1200 x 900px</div>
+              <div class="ph-path">images/portfolio_mockup_01.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge mockup">Seat Mockup · Full Set</span>
+            <div class="title">프리미엄 세단 시트 풀 세트 목업</div>
+            <div class="desc">실제 양산품과 동일한 가죽 소재와 곡면 폼을 정밀 재현한 품평회용 목업입니다.</div>
+          </div>
+        </div>
+
+        <!-- 2. 튜닝 톨 -->
+        <div class="gallery-card tall reveal reveal-delay-1" data-category="tuning">
+          <div class="media-box">
+            <img src="images/portfolio_tuning_01.jpg" alt="카니발 VIP 리무진 시트" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge" style="color:var(--gold);">Tuning Slot</span>
+              <div class="ph-icon">🚘</div>
+              <div class="ph-title">카니발 VIP 의전 시트</div>
+              <div class="ph-spec">권장: 600 x 900px (세로형)</div>
+              <div class="ph-path">images/portfolio_tuning_01.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge tuning">VIP Tuning · Carnival</span>
+            <div class="title">카니발 하이리무진 VIP 의전 시트</div>
+            <div class="desc">전동 언더서포트와 메모리 폼, 릴렉션 무중력 기능이 탑재된 의전 전용 시트입니다.</div>
+          </div>
+        </div>
+
+        <!-- 3. 디테일 -->
+        <div class="gallery-card reveal reveal-delay-2" data-category="detail">
+          <div class="media-box">
+            <img src="images/portfolio_detail_01.jpg" alt="나파가죽 퀼팅 스티치" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge">Detail Slot</span>
+              <div class="ph-icon">🪡</div>
+              <div class="ph-title">나파가죽 퀼팅 스티치</div>
+              <div class="ph-spec">권장: 600 x 500px</div>
+              <div class="ph-path">images/portfolio_detail_01.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge detail">Craft · Stitching</span>
+            <div class="title">다이아몬드 퀼팅 & 더블 스티치</div>
+            <div class="desc">오차 0.5mm 이내의 균일한 스티치 간격과 입체 볼륨 가공입니다.</div>
+          </div>
+        </div>
+
+        <!-- 4. 튜닝 차박 평탄화 -->
+        <div class="gallery-card reveal reveal-delay-1" data-category="tuning">
+          <div class="media-box">
+            <img src="images/portfolio_tuning_02.jpg" alt="스타리아 180도 평탄화 시트" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge" style="color:var(--gold);">Tuning Slot</span>
+              <div class="ph-icon">🏕️</div>
+              <div class="ph-title">스타리아 차박 평탄화 시트</div>
+              <div class="ph-spec">권장: 600 x 500px</div>
+              <div class="ph-path">images/portfolio_tuning_02.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge tuning">Tuning · Camping</span>
+            <div class="title">180도 풀 플랫 차박 침대형 시트</div>
+            <div class="desc">단차 없는 완벽한 평탄화로 차박과 레저에 최적화된 공간 활용 시트입니다.</div>
+          </div>
+        </div>
+
+        <!-- 5. 목업 와이드 -->
+        <div class="gallery-card wide reveal reveal-delay-2" data-category="mockup">
+          <div class="media-box">
+            <img src="images/portfolio_mockup_02.jpg" alt="리클라이너 메커니즘 시제품" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge">Mechanism Slot</span>
+              <div class="ph-icon">⚙️</div>
+              <div class="ph-title">전동 리클라이닝 기구부 시제품</div>
+              <div class="ph-spec">권장: 1000 x 500px (와이드)</div>
+              <div class="ph-path">images/portfolio_mockup_02.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge mockup">Prototype · Mechanism</span>
+            <div class="title">전동 리클라이너 기구부 동작 시제품</div>
+            <div class="desc">실제 차량 전원 규격과 연동되어 내구성 및 간섭을 검증하는 메커니즘 시제품입니다.</div>
+          </div>
+        </div>
+
+        <!-- 6. 디테일 알칸타라 -->
+        <div class="gallery-card reveal reveal-delay-3" data-category="detail">
+          <div class="media-box">
+            <img src="images/portfolio_detail_02.jpg" alt="알칸타라 트리밍" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge">Detail Slot</span>
+              <div class="ph-icon">✨</div>
+              <div class="ph-title">이태리 정품 알칸타라 트리밍</div>
+              <div class="ph-spec">권장: 600 x 500px</div>
+              <div class="ph-path">images/portfolio_detail_02.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge detail">Material · Alcantara</span>
+            <div class="title">알칸타라 & 파이핑 커스텀</div>
+            <div class="desc">고급 스포츠 세단과 슈퍼카에 사용되는 정품 알칸타라 소재 마감입니다.</div>
+          </div>
+        </div>
+
+        <!-- 7. 목업 3D 모델링 -->
+        <div class="gallery-card reveal reveal-delay-2" data-category="mockup">
+          <div class="media-box">
+            <img src="images/portfolio_mockup_03.jpg" alt="CATIA 3D 역설계" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge">CAD Slot</span>
+              <div class="ph-icon">📐</div>
+              <div class="ph-title">CATIA 3D 설계 & 스캔 데이터</div>
+              <div class="ph-spec">권장: 600 x 500px</div>
+              <div class="ph-path">images/portfolio_mockup_03.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge mockup">Design · 3D CAD</span>
+            <div class="title">3D 역설계 & 디지털 트윈</div>
+            <div class="desc">인체공학 데이터와 차량 실내 좌표계를 완벽히 일치시키는 정밀 3D 모델링입니다.</div>
+          </div>
+        </div>
+
+        <!-- 8. 튜닝 수입 밴 -->
+        <div class="gallery-card reveal reveal-delay-3" data-category="tuning">
+          <div class="media-box">
+            <img src="images/portfolio_tuning_03.jpg" alt="수입 밴 실내 풀 커스텀" class="real-img" onload="this.classList.add('loaded')">
+            <div class="placeholder-guide">
+              <span class="ph-badge" style="color:var(--gold);">Tuning Slot</span>
+              <div class="ph-icon">🚐</div>
+              <div class="ph-title">수입 밴 실내 풀 커스텀</div>
+              <div class="ph-spec">권장: 600 x 500px</div>
+              <div class="ph-path">images/portfolio_tuning_03.jpg</div>
+            </div>
+          </div>
+          <div class="gallery-card-overlay">
+            <span class="cat-badge tuning">Tuning · Luxury Van</span>
+            <div class="title">벤츠 스프린터/V-Class VIP 빌드</div>
+            <div class="desc">실내 전체 트리밍과 요트 바닥재, 프라이빗 파티션이 결합된 최고급 공간 빌드입니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 핵심 기술력 & 품질 보증 (Technology) ═══════ -->
+  <section class="technology" id="technology">
+    <div class="container">
+      <div class="tech-layout">
+        <div class="tech-sticky reveal">
+          <div class="section-label">Engineering & Craft</div>
+          <h2 class="section-title">
+            이루의 기술력은<br>
+            타협하지 않습니다
+          </h2>
+          <p class="section-desc">
+            정밀 가공부터 완성차 규격 품질 관리, 그리고 최고급 가죽 장인 테크닉까지 —
+            목업과 튜닝 모두 완벽한 엔지니어링 프로세스를 통해 탄생합니다.
+          </p>
+        </div>
+
+        <div class="tech-cards">
+          <div class="tech-card reveal">
+            <div class="tech-card-num">01</div>
+            <div class="tech-card-icon">⚡</div>
+            <h3>5축 CNC 초정밀 가공</h3>
+            <p>±0.05mm 공차를 준수하는 최신 5축 고속 가공기로 복잡한 3D 자유곡면도 정확하게 깎아냅니다.</p>
+          </div>
+
+          <div class="tech-card reveal reveal-delay-1">
+            <div class="tech-card-num">02</div>
+            <div class="tech-card-icon">📐</div>
+            <h3>3D 역설계 & 시뮬레이션</h3>
+            <p>CATIA, SolidWorks 전문 엔지니어가 인체공학적 착좌감 분석 및 차량 실내 간섭을 사전에 완벽 검증합니다.</p>
+          </div>
+
+          <div class="tech-card reveal reveal-delay-2">
+            <div class="tech-card-num">03</div>
+            <div class="tech-card-icon">🔍</div>
+            <h3>CMM 3차원 측정 검사</h3>
+            <p>완성차 납품 규격에 맞춘 3차원 정밀 계측과 엄격한 전수 검사로 불량률 제로를 실현합니다.</p>
+          </div>
+
+          <div class="tech-card reveal reveal-delay-3">
+            <div class="tech-card-num">04</div>
+            <div class="tech-card-icon">🪡</div>
+            <h3>프리미엄 가죽 & 스티치 장인</h3>
+            <p>최고 등급 나파가죽과 수입 특수사를 사용하여 양산차 이상의 마감 퀄리티와 촉감을 보장합니다.</p>
+          </div>
+
+          <div class="tech-card reveal reveal-delay-1">
+            <div class="tech-card-num">05</div>
+            <div class="tech-card-icon">🛡️</div>
+            <h3>합법 구조변경 & 안전 검증</h3>
+            <p>시트 튜닝 시 승객 안전을 최우선으로 국토부 인증 기준에 부합하는 프레임 강도 및 구조변경 절차를 지원합니다.</p>
+          </div>
+
+          <div class="tech-card reveal reveal-delay-2">
+            <div class="tech-card-num">06</div>
+            <div class="tech-card-icon">🔒</div>
+            <h3>철저한 보안 관리 (NDA)</h3>
+            <p>개발 중인 신차 디자인 및 고객사의 핵심 정보 유출을 원천 차단하는 독립 보안 구역을 운영합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ [대폭 강화] 인터랙티브 견적 및 상담 폼 (Inquiry) ═══════ -->
+  <section class="inquiry-section" id="inquiry">
+    <div class="container">
+      <div class="inquiry-wrapper reveal">
+        <div class="inquiry-head">
+          <div class="section-label" style="justify-content:center;">Get A Quote & Consultation</div>
+          <h2>온라인 견적 및 상담 문의</h2>
+          <p>원하시는 사업 분야를 선택해 주시면 전문 담당자가 24시간 이내에 상세한 답변을 드립니다.</p>
+        </div>
+
+        <!-- 1. 문의 분야 선택 탭 -->
+        <div class="inquiry-type-selector">
+          <button type="button" class="type-tab-btn active" id="tabMockup" onclick="switchInquiryType('mockup')">
+            🏢 기업 시트 목업 / 시제품 제작
+          </button>
+          <button type="button" class="type-tab-btn tuning-tab" id="tabTuning" onclick="switchInquiryType('tuning')">
+            🚘 VIP 시트 튜닝 / 차량 개조 상담
+          </button>
+        </div>
+
+        <!-- 2. 입력 폼 -->
+        <form id="inquiryForm" onsubmit="handleInquirySubmit(event)">
+          <input type="hidden" id="selectedInquiryType" name="inquiryType" value="기업 시트 목업/시제품 제작">
+
+          <div class="form-grid">
+            <!-- 공통: 기본 정보 -->
+            <div class="form-group">
+              <label for="clientName">의뢰인 / 회사명 <span class="req">*</span></label>
+              <input type="text" id="clientName" class="form-control" placeholder="예: (주)현대모빌리티 또는 홍길동" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactPhone">연락처 <span class="req">*</span></label>
+              <input type="tel" id="contactPhone" class="form-control" placeholder="010-0000-0000" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">이메일 주소 <span class="req">*</span></label>
+              <input type="email" id="contactEmail" class="form-control" placeholder="example@company.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="targetSchedule">희망 납기 / 시공 희망일</label>
+              <input type="date" id="targetSchedule" class="form-control">
+            </div>
+
+            <!-- 동적 영역 A: 시트 목업 선택 시 표시 -->
+            <div id="mockupFields" class="form-group full">
+              <label>목업 제작 목적 및 사양</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox" name="mockupScope" value="선행디자인품평회"> 디자인 품평회용 목업</label>
+                <label class="checkbox-item"><input type="checkbox" name="mockupScope" value="기능성시제품"> 전동 메커니즘 기능 검증</label>
+                <label class="checkbox-item"><input type="checkbox" name="mockupScope" value="3D스캔역설계"> 3D 스캔 및 역설계</label>
+                <label class="checkbox-item"><input type="checkbox" name="mockupScope" value="부품단품제작"> 헤드레스트/암레스트 단품</label>
+              </div>
+            </div>
+
+            <!-- 동적 영역 B: 시트 튜닝 선택 시 표시 -->
+            <div id="tuningFields" class="form-group full" style="display:none;">
+              <label>시공 희망 차종 및 커스텀 항목</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox" name="tuningScope" value="카니발VIP의전"> 카니발 VIP 의전 시트</label>
+                <label class="checkbox-item"><input type="checkbox" name="tuningScope" value="스타리아차박"> 스타리아 180도 평탄화</label>
+                <label class="checkbox-item"><input type="checkbox" name="tuningScope" value="수입밴커스텀"> 수입 밴 (스프린터/V클래스)</label>
+                <label class="checkbox-item"><input type="checkbox" name="tuningScope" value="나파가죽전체교체"> 최고급 나파가죽 시트 교체</label>
+                <label class="checkbox-item"><input type="checkbox" name="tuningScope" value="통풍열선안마"> 릴렉션 무중력 / 에어 안마</label>
+                <label class="checkbox-item"><input type="checkbox" name="tuningScope" value="합법구조변경"> 구조변경 승인 대행</label>
+              </div>
+            </div>
+
+            <!-- 공통: 상세 요청사항 -->
+            <div class="form-group full">
+              <label for="detailRequest">상세 요청사항 (사양, 수량, 차종 등)</label>
+              <textarea id="detailRequest" class="form-control" placeholder="구체적인 요구사항이나 문의사항을 입력해 주시면 더욱 정확하고 빠른 견적 산출이 가능합니다."></textarea>
+            </div>
+
+            <!-- 파일 첨부 가이드 -->
+            <div class="form-group full">
+              <label>도면 / 참조 사진 첨부</label>
+              <div class="file-upload-box" onclick="document.getElementById('fileUpload').click()">
+                <div style="font-size: 1.5rem; margin-bottom: 6px;">📁</div>
+                <div style="font-size: 0.88rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">클릭하여 CAD, PDF, 이미지 파일 첨부</div>
+                <span>(CATIA, STP, DWG, PDF, JPG 파일 지원 / 최대 50MB)</span>
+                <input type="file" id="fileUpload" style="display:none;" multiple>
+              </div>
+            </div>
+          </div>
+
+          <!-- 개인정보 수집 동의 -->
+          <div class="privacy-notice">
+            <input type="checkbox" id="privacyAgree" required>
+            <label for="privacyAgree">개인정보 수집 및 이용(견적 상담 및 답변 목적)에 동의합니다.</label>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            문의 및 견적 신청하기 ➔
+          </button>
+        </form>
+
+        <!-- 즉시 전화 상담 배너 -->
+        <div class="quick-call-box">
+          <div class="txt">
+            <h4>긴급 품평회 일정이나 방문 상담이 필요하신가요?</h4>
+            <p>이루 전문 엔지니어와 즉시 유선 상담을 받으실 수 있습니다.</p>
+          </div>
+          <a href="tel:031-000-0000" class="call-btn">
+            📞 유선 상담 연결 (031-000-0000)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="logo_png.png" alt="(주)이루 IRU">
+          <p>
+            자동차 시트 목업의 정밀한 기준과<br>
+            VIP 프리미엄 시트 튜닝의 새로운 감동.<br>
+            <strong>LET'S MAKE IT HAPPEN.</strong>
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Navigation</div>
+          <ul>
+            <li><a href="#about">회사소개</a></li>
+            <li><a href="#services">사업분야</a></li>
+            <li><a href="#gallery">포트폴리오</a></li>
+            <li><a href="#technology">핵심기술력</a></li>
+            <li><a href="#inquiry">견적 및 상담문의</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul>
+            <li><a href="#services">자동차 시트 목업</a></li>
+            <li><a href="#services">3D 역설계 & 시제품</a></li>
+            <li><a href="#services">카니발 VIP 리무진 시트</a></li>
+            <li><a href="#services">차박 평탄화 침대시트</a></li>
+            <li><a href="#services">나파가죽 커스텀 트리밍</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Contact Us</div>
+          <ul>
+            <li>📍 본사/연구소: 경기도 소재 공장 (상세 주소)</li>
+            <li>📞 대표번호: 031-000-0000</li>
+            <li>📠 팩스: 031-000-0001</li>
+            <li>✉️ 이메일: info@iru.co.kr</li>
+            <li>⏰ 운영시간: 평일 08:30 - 18:00 (주말 예약제)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 (주)이루 IRU Co., Ltd. All rights reserved.</p>
+        <div class="footer-legal-links">
+          <span>사업자등록번호: 000-00-00000</span>
+          <span>대표자: 대표이사</span>
+          <span>개인정보보호책임자: 담당자</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ 자바스크립트 인터랙션 ═══════ -->
+  <script>
+    // 1. 네비게이션 스크롤 블러 효과
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // 2. IntersectionObserver를 이용한 스크롤 리빌 애니메이션
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // 3. 부드러운 스크롤 & 모바일 메뉴 자동 닫기
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('navLinks').classList.remove('mobile-open');
+        }
+      });
+    });
+
+    // 4. 포트폴리오 탭 필터링
+    function filterGallery(category) {
+      // 탭 버튼 active 클래스 제어
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // 카드 필터링
+      const cards = document.querySelectorAll('.gallery-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'block';
+          setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 50);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          setTimeout(() => { card.style.display = 'none'; }, 300);
+        }
+      });
+    }
+
+    // 5. 견적 문의 유형 전환 (목업 vs 튜닝)
+    function switchInquiryType(type) {
+      const tabMockup = document.getElementById('tabMockup');
+      const tabTuning = document.getElementById('tabTuning');
+      const mockupFields = document.getElementById('mockupFields');
+      const tuningFields = document.getElementById('tuningFields');
+      const hiddenType = document.getElementById('selectedInquiryType');
+
+      if (type === 'mockup') {
+        tabMockup.classList.add('active');
+        tabTuning.classList.remove('active');
+        mockupFields.style.display = 'flex';
+        tuningFields.style.display = 'none';
+        hiddenType.value = '기업 시트 목업/시제품 제작';
+      } else {
+        tabTuning.classList.add('active');
+        tabMockup.classList.remove('active');
+        mockupFields.style.display = 'none';
+        tuningFields.style.display = 'flex';
+        hiddenType.value = 'VIP 시트 튜닝/차량 개조 상담';
+      }
+    }
+
+    // 6. 폼 제출 핸들러 (사용자 피드백 알림)
+    function handleInquirySubmit(e) {
+      e.preventDefault();
+      const type = document.getElementById('selectedInquiryType').value;
+      const name = document.getElementById('clientName').value;
+      alert(`[접수 완료]\n${name} 고객님의 [${type}] 문의가 성공적으로 접수되었습니다.\n담당 엔지니어가 기재해 주신 연락처로 24시간 내에 연락드리겠습니다.`);
+      document.getElementById('inquiryForm').reset();
+    }
+  </script>
+
+</body>
+</html>
